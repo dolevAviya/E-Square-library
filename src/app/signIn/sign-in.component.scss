@@ -1,0 +1,74 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+
+  &::after {
+    content: "";
+    background: url("../../assets/images/book-shelves.jpg");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-size: 100% auto;
+  }
+
+  form {
+    opacity: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 5px 0 black;
+    height: 450px;
+    width: 400px;
+    padding: 50px 80px;
+    border-radius: 3px;
+
+    h1 {
+      align-self: center;
+      font-size: 40px;
+      margin: 0;
+    }
+
+    .fields {
+      border-bottom: 1px solid gray;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .submit {
+      padding: 12px;
+      align-self: center;
+      width: 45%;
+      font-size: 15px;
+      background: white;
+      border: 1px solid #1ad000;
+      border-radius: 4px;
+      color: #1ad000;
+      font-family: "Roboto";
+      cursor: pointer;
+
+      &:disabled,
+      &[disabled]{
+        border: 1px solid gray;
+        color: gray;
+        cursor: auto;
+      }
+    }
+
+  }
+}
+
+
+
+
+
+

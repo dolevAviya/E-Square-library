@@ -1,0 +1,35 @@
+<div *ngIf="volume" [class.big]="bigCard">
+  <div class="card">
+    <img *ngIf="volume.volumeInfo.imageLinks?.thumbnail; else defaultImg"
+         [src]="volume.volumeInfo.imageLinks?.thumbnail" routerLink="/main/single-book" [state]="volume">
+    <div class="card-content" routerLink="/main/single-book" [state]="volume">
+      <h3 class="title">{{volume.volumeInfo.title}}</h3>
+      <h5 class="sub-title">{{volume.volumeInfo.subtitle}}</h5>
+      <div class="line" *ngIf="volume.volumeInfo.authors">
+        <p>Authors:</p>
+        <p *ngFor="let author of volume.volumeInfo.authors; last as isLast">{{author}}
+          <span *ngIf="!isLast">,</span>
+        </p>
+      </div>
+      <div class="line" *ngIf="volume.volumeInfo.publishedDate">
+        <p>Published Date:</p>
+        <p *ngIf="!newDate">{{volume.volumeInfo.publishedDate}}</p>
+        <p *ngIf="newDate">{{newDate | date}}</p>
+      </div>
+    </div>
+    <i class="fa-regular fa-heart" (click)="addToWishlist()" *ngIf="!isVolumeClicked"></i>
+    <i class="fa-solid fa-heart" (click)="removeFromWishlist()" *ngIf="isVolumeClicked"></i>
+  </div>
+  <div *ngIf="bigCard" class="description">
+    <h4>Description</h4>
+    <p *ngIf="volume.volumeInfo.description; else noDescription">{{volume.volumeInfo.description}}</p>
+  </div>
+</div>
+
+<ng-template #defaultImg>
+  <img src="assets/images/no-img.png">
+</ng-template>
+
+<ng-template #noDescription>
+  <p>No description available..</p>
+</ng-template>

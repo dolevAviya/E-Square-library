@@ -1,0 +1,10 @@
+<div class="page-container">
+<form [formGroup]="singInForm" (ngSubmit)="handleSignIn()">
+  <h1>Welcome!</h1>
+  <div class="fields">
+    <label>username</label>
+    <input id="username" formControlName="username">
+  </div>
+  <button type="submit" class="submit" [disabled]=" singInForm.value.username === ''">Sign In</button>
+</form>
+</div>

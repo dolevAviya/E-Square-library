@@ -1,0 +1,28 @@
+<div class="layout">
+  <div class="search-container">
+    <div class="search-bar">
+      <input placeholder="search a book.." [(ngModel)]="searchValue" (ngModelChange)="handleSearch()">
+      <i *ngIf="searchValue.length === 0" class="fa fa-search"></i>
+      <i *ngIf="searchValue.length > 0" class="fa fa-xmark" (click)="searchValue =''; volumes = []"></i>
+    </div>
+  </div>
+  <div class="cards" *ngIf="!isLoading else loading">
+    <app-book-card *ngFor="let volume of volumes" [volume]="volume"></app-book-card>
+    <h2 class="no-results" *ngIf="!volumes?.length && searchValue !== ''">Sorry! No Results Found :(</h2>
+  <div class="pagination" *ngIf="volumes?.length">
+    <button [disabled]="currentPage === 1" (click)="handlePagination('back')">
+      <i class="fa-solid fa-angle-left"></i></button>
+    <p>page {{ currentPage}}</p>
+    <button (click)="handlePagination('foreword')">
+      <i class="fa-solid fa-angle-right"></i>
+    </button>
+  </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <i class="fa-solid fa-circle-notch fa-spin"></i>
+    <p>loading..</p>
+  </div>
+</ng-template>

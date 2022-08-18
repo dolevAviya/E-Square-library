@@ -1,0 +1,24 @@
+.top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 25px;
+  box-shadow: 0 3px 2px -2px gray;
+  color: white;
+  background: #33a0a6;
+
+  .nav-items {
+    display: flex;
+    gap: 30px;
+
+    .nav-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      cursor: pointer;
+
+      &:hover {
+        color: #e1e1e1;
+      }
+    }
+  }
+}

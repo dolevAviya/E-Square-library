@@ -1,0 +1,17 @@
+<div class="top-bar-container">
+  <p>Welcome, {{username}}</p>
+  <div class="nav-items">
+    <div class="nav-item" routerLink="library">
+      <p>Library</p>
+      <i class="fa-solid fa-book"></i>
+    </div>
+    <div class="nav-item" routerLink="wishlist">
+      <p>Wishlist</p>
+      <i class="fa-regular fa-heart"></i>
+    </div>
+    <div class="nav-item" (click)="logout()">
+      <p>Logout</p>
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    </div>
+  </div>
+</div>

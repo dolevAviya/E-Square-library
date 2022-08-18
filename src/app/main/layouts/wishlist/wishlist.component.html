@@ -1,0 +1,6 @@
+<h2>My Wishlist</h2>
+<div class="cards">
+  <app-book-card *ngFor="let volume of volumes" [volume]="volume"
+                 [isVolumeClicked]="true"
+  ></app-book-card>
+</div>
