@@ -1,14 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BooksService} from "../../books.service";
 import {Book} from "../../books";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit, OnDestroy {
   volumes: Book[] = [];
+  bookSubscription: Subscription = new Subscription;
 
   constructor(private booksService: BooksService) {
   }
@@ -18,10 +20,12 @@ export class WishlistComponent implements OnInit {
   }
 
   get_volumes() {
-    this.booksService.get_wishlist().subscribe(res => {
-      this.volumes = res
-      console.log(res)
-
-    })
+    this.bookSubscription = this.booksService.get_wishlist().subscribe(res =>
+      this.volumes = res)
   }
+
+  ngOnDestroy() {
+    this.bookSubscription.unsubscribe();
+  }
+
 }
